@@ -108,3 +108,4 @@ then
     VALIDATE $? "nginx"
 else
     echo -e "$y nginx is already installed...Nothing to do $N" 
+    
