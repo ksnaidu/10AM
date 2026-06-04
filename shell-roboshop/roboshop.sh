@@ -2,7 +2,7 @@
 
 AMI_ID="ami-0220d79f3f480ecf5"
 SG_ID="sg-0629e944a73597de8" # replace with your SG_id
-INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "frontend" "catalogue")
+INSTANCES=("mongodb" "catalogue" "frontend" "redis" "user" "cart" "mysql" "shipping" "rabbitmq" "payment" "dispatch")
 ZONE_ID="Z06008633JIHZ67B3RC4Q"  # replace with your zone_id
 DOMAIN_NAME="kimidi.site"  # replace with your Domain Name
 
@@ -21,23 +21,23 @@ do
 fi
 echo "$instance IP address: $IP"
 
-aws route53 change-resource-record-sets \
-    --hosted-zone-id $ZONE_ID \
-    --change-batch '
-    {
-        "Comment": "Creating or Updating a record set for cognito endpoint"
-        ,"Changes": [{
-        "Action"              : "UPSERT"
-        ,"ResourceRecordSet"  : {
-            "Name"              : "'$RECORD_NAME'"
-            ,"Type"             : "A"
-            ,"TTL"              : 1
-            ,"ResourceRecords"  : [{
-                "Value"         : "'$IP'"
-            }]
-        }
-        }]
-    }'
-done
+# aws route53 change-resource-record-sets \
+#     --hosted-zone-id $ZONE_ID \
+#     --change-batch '
+#     {
+#         "Comment": "Creating or Updating a record set for cognito endpoint"
+#         ,"Changes": [{
+#         "Action"              : "UPSERT"
+#         ,"ResourceRecordSet"  : {
+#             "Name"              : "'$RECORD_NAME'"
+#             ,"Type"             : "A"
+#             ,"TTL"              : 1
+#             ,"ResourceRecords"  : [{
+#                 "Value"         : "'$IP'"
+#             }]
+#         }
+#         }]
+#     }'
+# done
 
 
