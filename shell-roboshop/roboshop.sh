@@ -2,7 +2,7 @@
 
 AMI_ID="ami-0220d79f3f480ecf5"
 SG_ID="sg-0629e944a73597de8" # replace with your SG_id
-INSTANCES=("mongodb" "catalogue" "frontend" "redis" "user" "cart" "mysql" "shipping" "rabbitmq" "payment" "dispatch")
+INSTANCES=("mongodb" "catalogue" "frontend" "redis" "user" "cart")
 ZONE_ID="Z06008633JIHZ67B3RC4Q"  # replace with your zone_id
 DOMAIN_NAME="kimidi.site"  # replace with your Domain Name
 
