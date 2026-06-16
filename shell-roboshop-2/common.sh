@@ -108,3 +108,21 @@ python_setup() {
 
 }
 
+golang_setup() {
+      
+    dnf install golang -y &>>$LOG_FILE
+    VALIDATE $? "Installing Golang"
+
+    
+    if [ ! -f go.mod ]; then
+        go mod init $app_name &>>$LOG_FILE
+        VALIDATE $? "Initializing Go Module"
+    fi
+
+    go mod tidy &>>$LOG_FILE
+    VALIDATE $? "Downloading Dependencies"
+
+    go build &>>$LOG_FILE
+    VALIDATE $? "Building $app_name Service"
+}
+
