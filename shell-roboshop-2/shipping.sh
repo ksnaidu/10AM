@@ -11,7 +11,7 @@ app_setup
 maven_setup
 systemd_setup
 
-dnf install mysql -y 
+dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "Installing MYSQL"
 
 mysql -h mysql.kimidi.site -u root -p$MYSQL_ROOT_PASSWORD -e 'use cities' &>>$LOG_FILE
