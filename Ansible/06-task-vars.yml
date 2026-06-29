@@ -1,20 +1,19 @@
----
-- name: play level varaibles
+- name: play level variables
   hosts: local
   connection: local
   vars:
-    COURSE: Devops with AWS
+    COURSE: DevOps with AWS
     DURATION: 10HR
-    TRAINER: Satyam 
+    TRAINER: Satyam
   tasks:
   - name: print course information
     vars:
       COURSE: Ansible
     ansible.builtin.debug:
-       msg: "Hello {{ COURSE }}, Course Duration: {{ DURATION }}, Trainer is {{ TRAINER }}"
+    #vars refernce should be surrounded by ""
+      msg: "Hello {{ COURSE }}, Course Duration: {{ DURATION }}, Trainer is {{ TRAINER }}"
 
-  tasks:
-  - name: print course information
+  - name: print course information again
     ansible.builtin.debug:
-       msg: "Hello {{ COURSE }}, Course Duration: {{ DURATION }}, Trainer is {{ TRAINER }}"
-
+    #vars refernce should be surrounded by ""
+      msg: "Hello {{ COURSE }}, Course Duration: {{ DURATION }}, Trainer is {{ TRAINER }}"
