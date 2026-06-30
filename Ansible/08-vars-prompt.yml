@@ -13,3 +13,8 @@
   - name: printing user information
     ansible.builtin.debug:
       msg: "Hello Username is: {{ USERNAME }}, password is: {{ PASSWORD }}"
+
+  - name: printing user information again
+    ansible.builtin.debug:
+      msg: "Hello Username is: {{ USERNAME }}, password is: {{ PASSWORD }}"
+    no_log: true 
