@@ -6,10 +6,10 @@
     GREETING: Hello from PLAY
   # vars_files:
   #   - course.yml
-  vars_prompt:
-    - name: GREETING
-      prompt: Please enter the GREETING
-      private: false
+  # vars_prompt:
+  #   - name: GREETING
+  #     prompt: Please enter the GREETING
+  #     private: false
   tasks:
     - name: print the greeting
       # vars:
@@ -21,3 +21,4 @@
 ###command line args.
 ### task level
 ### file
+### prompt
