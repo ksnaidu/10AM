@@ -1,0 +1,15 @@
+---
+- name: loops
+  hosts: local
+  connection: local
+  tasks:
+  - name: print names
+    ansible.builtin.debug:
+      msg: "Hello, {{ item }} " # item here is  resrved keyword,
+      ## item taken values one by one from list.
+    
+    loop:
+    - suresh
+    - rajesh
+    - ramesh
+    - joseph

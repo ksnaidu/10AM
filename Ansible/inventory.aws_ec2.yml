@@ -1,0 +1,16 @@
+plugin: amazon.aws.aws_ec2 #Use AWS EC2 dynamic inventory plugin.This plugin contacts AWS API and retrieves EC2 instance details.
+regions:
+- us-east-1
+keyed_groups:
+- key: tags.Name #dynamic-frontend
+  prefix: "dynamic"
+  separator: "_"
+filters:  #ONLY fetch EC2 instances:whose Name tag = frontend,and state = running,Stopped instances are ignored.
+  tag:Name: frontend
+  instance-state-name : running
+hostnames: ###Inventory hostnames will use:EC2 private IP address
+  # You can also specify a list in order of precedence for hostname variables.
+  - private-ip-address
+compose:
+  # This sets the `ansible_host` variable to connect with the private IP address without changing the hostname.
+  ansible_host: private_ip_address
