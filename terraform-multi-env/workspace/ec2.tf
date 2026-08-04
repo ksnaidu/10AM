@@ -2,6 +2,7 @@ resource "aws_instance" "roboshop" {
   count                  = length(var.instances)
   ami                    = var.ami_id # left and right side names no need to be same
   instance_type          = lookup(var.instance_type, terraform.workspace)
+  subnet_id = "subnet-040e46e23d5653bd4"
   vpc_security_group_ids = [aws_security_group.allow_all.id]
 
   tags = merge(
