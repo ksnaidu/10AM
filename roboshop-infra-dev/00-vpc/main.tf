@@ -15,3 +15,11 @@ module "vpc" {
     #is_peering_required = "true"
 }
 
+
+    # output "vpc_id" {
+    #     value = module.vpc.vpc_id
+    # }
+
+
+
+

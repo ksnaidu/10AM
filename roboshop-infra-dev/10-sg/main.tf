@@ -5,6 +5,6 @@ module "frontend" {
 
     sg_name = var.frontend_sg_name
     sg_description = var.frontend_sg_description 
-    vpc_id = local.vpc_id   ##vpc-id stroed in ssm parameter
+    vpc_id = local.vpc_id  ##vpc-id stroed in ssm parameter
 }
 
