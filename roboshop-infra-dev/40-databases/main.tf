@@ -14,3 +14,11 @@ resource "aws_instance" "mongodb" {
 }
 
 
+resource "terraform_data" "mongodb" {
+  triggers_replace = [
+    aws_instance.mongodb.id
+  ]
+  
+}
+
+
