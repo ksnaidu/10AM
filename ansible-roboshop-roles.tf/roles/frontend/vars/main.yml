@@ -1,0 +1,7 @@
+
+
+CATALOGUE_HOST: catalogue.kimidi.site
+USER_HOST: user.kimidi.site
+CART_HOST: cart.kimidi.site
+SHIPPING_HOST: shipping.kimidi.site
+PAYMENT_HOST: payment.kimidi.site
