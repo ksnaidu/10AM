@@ -4,6 +4,12 @@ networks:
    name: roboshop
    #external: true
 
+volumes:
+  mongodb:
+  redis:
+  mysql:
+  rabbitmq: #docker volume create
+
 services:
   mongodb:
     volumes:
@@ -51,12 +57,14 @@ services:
    - cart
 
 
-  rbbitmq:
-   image: rabbitmq:3
-   container_name: rabbitmq
-   environment:
-     RABBITMQ_DEFAULT_USER: roboshop
-     RABBITMQ_DEFAUKT_PASS: robsohop123
+  rabbitmq:
+    volumes:
+    - rabbitmq: /var/lib/rabbitmq
+    image: rabbitmq:3
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: roboshop
+      RABBITMQ_DEFAULT_PASS: roboshop123
 
   payment:
     image: adithyagorapalli/payemnt:v1
