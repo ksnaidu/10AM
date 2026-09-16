@@ -8,11 +8,11 @@ services:
   mongodb:
     volumes:
     - mongodb: /data/db #mongodb data store inthis location
-    image: staymnaidu/monogdb:v1
+    image: adithyagorapalli/monogdb:v1
     container_name: mongodb
 
   catalogue:
-    image: satyamnaidu/catalogue:v1
+    image: adithyagorapalli/catalogue:v1
     container_name: catalogue
     depends_on:
     - mongodb
@@ -24,14 +24,14 @@ services:
     container_name: redis
   
   user:
-   image: satyamnaidu/user:v1
+   image: adithyagorapalli/user:v1
    container_name: user
    depends_on:
    - redis
    - mongodb
 
   cart:
-   image: satyamnaidu/cart:v1
+   image: adithyagorapalli/cart:v1
    container_name: cart
    depends_on:
    - catalogue
@@ -40,11 +40,11 @@ services:
   mysql:
    volumes:
    - mysql: /var/lib/mysql
-   image: satyamnaidu/mysql:v1
+   image: adithyagorapalli/mysql:v1
    container_name: mysql
 
   shipping:
-   image: satyamnaidu/shipping:v1
+   image: adithyagorapalli/shipping:v1
    container_name: shippng
    depends_on:
    - mysql
@@ -59,7 +59,7 @@ services:
      RABBITMQ_DEFAUKT_PASS: robsohop123
 
   payment:
-    image: satyamnaidu/payemnt:v1
+    image: adithyagorapalli/payemnt:v1
     conatiner_name: payment
     environment:
       CART_HOST: cart
@@ -75,7 +75,7 @@ services:
     - user
 
   frontend:
-   image: ssatyamnaidu/fronted:v1
+   image: adithyagorapalli/fronted:v1
    container_name: frontend
    ports:
    - "80:80"
