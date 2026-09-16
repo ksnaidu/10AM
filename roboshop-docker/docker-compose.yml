@@ -73,6 +73,19 @@ services:
     - rabiitmq
     - cart
     - user
+
+  frontend:
+   image: ssatyamnaidu/fronted:v1
+   container_name: frontend
+   ports:
+   - "80:80"
+   depends_on:
+   - catlogue
+   - user
+   - cart
+   - shipping
+   - payment
+   
     
 
      
