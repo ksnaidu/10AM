@@ -1,28 +1,32 @@
+
 apiVersion: apps/v1
-kind: deployment
+kind: Deployment
+
 metadata:
   name: mongodb
-  Namespace: roboshop
-  #deployement labels
+  namespace: roboshop
   labels:
-   component: mongodb
-   project: roboshop
-   tier: database
-  spec:
-   replicas: 1
-   selector:
-     matchLabels:
-       component: mongodb
-       project: roboshop
-       tier: database
-  #this is pod definition
+    component: mongodb
+    project: roboshop
+    tier: database
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mongodb
+      project: roboshop
+      tier: database
+
   template:
     metadata:
       labels:
         component: mongodb
         project: roboshop
         tier: database
+
     spec:
       containers:
-      - name: mongodb
-        image: adithyagorapalli/mongodb:v1
+        - name: mongodb
+          image: adithyagorapalli/mongodb:v1
+          
