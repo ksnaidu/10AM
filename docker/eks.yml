@@ -11,5 +11,7 @@ managedNodeGroups:
     instanceTypes: ["t3.small"]
     desiredCapacity: 3
     minSize: 3
-    maxSize: 3
+    maxSize: 4
+    spot: true
+
 ```
