@@ -1,6 +1,5 @@
-```yaml
 apiVersion: eksctl.io/v1alpha5
-kind: ClusterConfig
+kind: clusterconfig
 
 metadata:
   name: roboshop
@@ -14,4 +13,3 @@ managedNodeGroups:
     maxSize: 4
     spot: true
 
-```
