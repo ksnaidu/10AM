@@ -62,3 +62,7 @@ spec:
   - protocol: TCP
     port: 8080 # service port
     targetPort: 8080 # container port
+
+
+#kubectl apply -f manifest.yml
+#kubectl get pods
