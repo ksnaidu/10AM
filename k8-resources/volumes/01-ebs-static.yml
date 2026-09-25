@@ -19,6 +19,7 @@ spec:
 ##kubectl get pv --> see the volume.
 
 
+
 ###pvc - peersisitent volume claim
 ##pvc--> it is claiming resource of the storage i.e pv
 #you can create the lables to the nodes,use those labels as node selectors inside pod.
@@ -38,3 +39,43 @@ spec:
       storage: 15Gi
 
 
+##git add. ; git commit -m "ebs" ; git push origin main
+##cd k8-resource/volumes
+##kubectl apply -f 01-ebs-static.yml
+##kubectl get pv --> see the volume.
+##kubectl get pvc --> see the pvc volume
+
+##kubectl describe pv ebs-static
+##kubectl describe pvc ebs-static
+
+
+## next we can add the pvc in pod.
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    purpose: ebs-static-demo
+    project: roboshop
+spec:
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1c
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts: # docker run -v host-path:container-path
+    - name: persistent-storage
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: ebs-static
+
+##git add. ; git commit -m "ebs" ; git push origin main
+##cd k8-resource/volumes
+##kubectl apply -f 01-ebs-static.yml
+
+
+---
