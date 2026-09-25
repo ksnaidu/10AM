@@ -77,5 +77,29 @@ spec:
 ##cd k8-resource/volumes
 ##kubectl apply -f 01-ebs-static.yml
 
+#kubectl get pods -o wide
 
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ebs-static
+  labels:
+    purpose: ebs-static-demo
+    project: roboshop
+spec:
+  type: LoadBalancer
+  selector:
+    purpose: ebs-static-demo
+    project: roboshop
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port
+
+##git add. ; git commit -m "ebs" ; git push origin main
+##cd k8-resource/volumes
+##kubectl apply -f 01-ebs-static.yml
+##kubectl get svc
+
+   
