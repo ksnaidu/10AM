@@ -17,3 +17,24 @@ spec:
 ##cd k8-resource/volumes
 ##kubectl apply -f 01-ebs-static.yml
 ##kubectl get pv --> see the volume.
+
+
+###pvc - peersisitent volume claim
+##pvc--> it is claiming resource of the storage i.e pv
+#you can create the lables to the nodes,use those labels as node selectors inside pod.
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-static
+spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: ebs-static
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 15Gi
+
+
