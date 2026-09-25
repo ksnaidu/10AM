@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: persistent volume
+metadata:
+  name: ebs-static
+spec: 
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 20Gi
+  csi:
+   driver: ebs.csi.aws.com
+   fsType: ext4
+   VolumeHandle: vol-072a8f44214a23f64  ##give the volume on ec2-instance-node(20-gb)
+
+
+##git add. ; git commit -m "ebs" ; git push origin main
+##cd k8-resource/volumes
+##kubectl apply -f 01-ebs-static.yml
+##kubectl get pv --> see the volume.
