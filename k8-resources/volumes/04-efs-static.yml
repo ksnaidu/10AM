@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: PersistentVolume 
+metadata:
+  name: efs-static
+spec:
+capactiy:
+   storage: 5Gi
+volumeMode: Filesystem
+accessModes:
+  - ReadWriteOnce
+storageClassName: "" # this should be empty in static provisioning
+persistentVolumereclaimPolicy: Retain
+csi:
+  driver: efs.csi.aws.com
+  volumeHandle: fs-0bce55c2a5841e18c  ## give the volume whatever you create previously
+
+
+## create presistent volume claim
+---
+apiVersion: v1
+kind: persistentVolumeClaim
+metadata:
+  name: efs-static
+spec:
+  accessModes:
+   - ReadWriteOnce
+storageClassName: ""
+resources:
+  requests:
+    storage: 5Gi
+
+
+
+# create pod
+---
+apiVersion: v1
+kind: pod
+metadata:
+ name: nginx
+ labels:
+  purpose: efs-static-demo
+  project: roboshop
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: persistent storage
+      mountPath: /usr/share/nginx/html
+    volumes:
+    - name: persitent-storage
+      persitemntVolumeClaiM:
+        claimNmae: efs-static
+
+
+# create service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: efs-static
+  lables:
+    purpose: efs-static-demo
+    project: roboshop
+spec:
+  type: LoadBalancer
+  selector:
+      purpose: efs-static-demo
+      project: roboshop
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port
+  
+
+## git pull
+##kubectl apply -f 04-efs-static.yml
+##kubectl get pods
+##kubectl get svc
+    
