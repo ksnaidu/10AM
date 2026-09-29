@@ -5,3 +5,9 @@ metadata:
   labels:
     project: roboshop
     environment: dev
+
+
+  ##cd k8-databases
+  ###kubectl apply -f 01-namespace.yml
+
+  

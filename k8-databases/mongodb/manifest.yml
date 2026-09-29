@@ -78,3 +78,11 @@ spec:
       resources:
         requests:
           storage: 2Gi
+
+
+  ## cd k8-databases
+  ##cd mongodb
+  ### kubectl apply -f manifest.yml
+  ##kubens roboshop
+  ##kubectl get pods ## 3 pods created one by one orderly
+  

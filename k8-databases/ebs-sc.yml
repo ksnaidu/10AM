@@ -5,3 +5,8 @@ metadata:
 reclaimPolicy: Retain
 provisioner: ebs.csi.aws.com
 volumeBindingMode: WaitForFirstConsumer # disk will be created when pod is getting created
+
+
+###cd k8-databases
+## kubectl apply -f ebs-sc.yml
+##kubectl get sc
