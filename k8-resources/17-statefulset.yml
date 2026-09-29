@@ -62,3 +62,11 @@ spec:
       resources:
         requests:
           storage: 2Gi
+
+
+##git pull
+##cd k8-resources
+###kubectl apply -f 17-statefulset.yml
+##kubect get pods --> see the headless service.
+##kubectl exec -it nginx -- bash
+##nslookup sc-headless-svc
