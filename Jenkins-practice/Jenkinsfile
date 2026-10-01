@@ -1,24 +1,52 @@
+
 pipeline {
-    agent any
+    agent {
+        label 'AGENT-1'
+    }
 
     stages {
 
         stage('Build') {
             steps {
+                script{
+                    echo "building ..."
+                }
                 echo 'Building the application'
             }
         }
 
         stage('Test') {
             steps {
+                script{
+                    echo 'testing ...'
+                }
                 echo 'Testing the application'
             }
         }
 
         stage('Deploy') {
             steps {
+                script{
+                    echo 'deploying ...'
+                }
                 echo 'Deploying the application'
             }
         }
     }
+
+    post {
+        always {
+            echo 'I will always say Hello again!'
+            deleteDir()
+        }
+
+        success {
+            echo 'Hello Success'
+        }
+
+        failure {
+            echo 'Hello Failure'
+        }
+    }
 }
+
