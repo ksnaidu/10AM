@@ -1,26 +1,24 @@
+pipeline {
+    agent any
 
-    pipeline {
-    agent {
-        label 'AGENT-1'
-    }
     stages {
+
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building the application'
             }
         }
-		
-		stage('Test') {
+
+        stage('Test') {
             steps {
-                echo 'Testing...'
+                echo 'Testing the application'
             }
+        }
+
         stage('Deploy') {
-		    steps {
-                echo 'Deploying...'
+            steps {
+                echo 'Deploying the application'
             }
+        }
     }
 }
-    }
-    }
-
-    
