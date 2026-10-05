@@ -4,9 +4,9 @@ pipeline {
         label 'AGENT-1'
     }
 
-    // environment {
-    //     COURSE = 'jenkins'
-    // }
+    environment {
+            appVersion = '' ## give empty after we provide in run time
+        }
 
     stages {
 
@@ -21,6 +21,16 @@ pipeline {
                     """
 
                     echo 'Building the application'
+                }
+            }
+        }
+
+        stage('Read pacjage.json') {
+            steps {
+                script {
+                  def packageJson = readJSON file: 'package.json'
+                  appVersion = packageJson.appVersion
+                  echo "Package Version: ${appVersion}"
                 }
             }
         }
