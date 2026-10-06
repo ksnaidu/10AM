@@ -39,6 +39,18 @@ pipeline {
                 echo 'Deploying the application'
             }
         }
+
+        stage('Install dependencies') {
+            steps {
+                script {
+                    sh """
+                     npm install
+                     """
+                }
+
+            }
+        }
+        
     }
 
     post {
