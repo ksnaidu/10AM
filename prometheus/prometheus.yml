@@ -1,0 +1,57 @@
+# my global config
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "localhost:9093"
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  - "alert-rules/*.yaml"
+# Scrape configurations
+scrape_configs:
+
+  # Prometheus itself
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+        labels:
+          app: "prometheus"
+
+
+  - job_name: 'ec2_instances'
+    ec2_sd_configs:
+      - region: us-east-1
+        port: 9100
+        filters:
+          - name: "tag:Monitoring"
+            values: ["true"]
+    relabel_configs:
+      # Rename the EC2 tag "Name" to the label "ec2_name"
+      - source_labels: [__meta_ec2_tag_Name]
+        target_label: name
+      # Rename the EC2 instance ID to the label "instance_id"
+      - source_labels: [__meta_ec2_instance_id]
+        target_label: instance_id
+
+
+
+
+
+
+
+  # # Node Exporter
+  # - job_name: "node-1"
+  #   static_configs:
+  #     - targets: ["172.31.35.206:9100"]
+  #       labels:
+  #         app: "node-1"
+  #         name: "node-1"
+
+
+
+		  
